@@ -28,7 +28,7 @@
 <meta property="og:description" content="IAMUsergroup Only contain users, can’t contain other groups Same user can share different usergroups">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-06-07T03:12:43.000Z">
-<meta property="article:modified_time" content="2022-06-08T04:28:40.923Z">
+<meta property="article:modified_time" content="2022-06-08T19:27:14.759Z">
 <meta property="article:author" content="Jinjing Ge">
 <meta property="article:tag" content="AWS">
 <meta name="twitter:card" content="summary">
@@ -194,7 +194,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-06-08 00:28:40" itemprop="dateModified" datetime="2022-06-08T00:28:40-04:00">2022-06-08</time>
+                <time title="Modified: 2022-06-08 15:27:14" itemprop="dateModified" datetime="2022-06-08T15:27:14-04:00">2022-06-08</time>
               </span>
 
           
@@ -225,10 +225,45 @@
 </ul>
 <h2 id="Access-to-AWS-services"><a href="#Access-to-AWS-services" class="headerlink" title="Access to AWS services"></a>Access to AWS services</h2><ul>
 <li>Management Console</li>
-<li>AWS CLI &amp; AWS CloudShell</li>
+<li>AWS CLI &amp; AWS CloudShell <em><strong>Add cofiguration</strong></em></li>
 <li>AWS SDK</li>
 </ul>
 <p>	</p>
+<h2 id="EC2"><a href="#EC2" class="headerlink" title="EC2"></a>EC2</h2><h3 id="Security-Group"><a href="#Security-Group" class="headerlink" title="Security Group"></a>Security Group</h3><ul>
+<li>Set of firewall rules that control the traffic for the instance, both inbound and outbound</li>
+<li>Only contain <strong>allow</strong> action</li>
+<li>Classic Ports<ol>
+<li>22 &#x3D; SSH (Secure Shell) - log into Linux instance</li>
+<li>22 &#x3D; SFTP (Secure File Transfer Protocol) - upload files using SSH</li>
+<li>21 &#x3D; FTP (File TRnsfer Protocol) - upload files into a file share</li>
+<li>80 &#x3D; HTTP - access unsecured websites</li>
+<li>443 &#x3D; HTTPS - access secured websites</li>
+<li>3389 &#x3D; RDP (Remote Desktop Protocol) - log into Windows instance</li>
+</ol>
+</li>
+</ul>
+<h3 id="User-Data"><a href="#User-Data" class="headerlink" title="User Data"></a>User Data</h3><ul>
+<li>Script to bootstrap the instance for the first time. (e.g: configure the server)</li>
+</ul>
+<h3 id="Public-amp-Private-IPv4-address"><a href="#Public-amp-Private-IPv4-address" class="headerlink" title="Public &amp; Private IPv4 address"></a>Public &amp; Private IPv4 address</h3><ul>
+<li>Public IP address can be be visited from the Internet</li>
+<li>Private IP address can only be visited from AWS network</li>
+<li>Public IP will change when restart the instance</li>
+<li>Private IP will not change when restart the instance</li>
+</ul>
+<h3 id="Connect-instance-by-SSH"><a href="#Connect-instance-by-SSH" class="headerlink" title="Connect instance by SSH"></a>Connect instance by SSH</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd &lt;repository having EC2 .pem file&gt;</span><br><span class="line">ssh -i .\&lt;filename&gt;.pem ec2-user@&lt;EC2 instance public IP&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="Connect-instance-by-EC2-Connect"><a href="#Connect-instance-by-EC2-Connect" class="headerlink" title="Connect instance by EC2 Connect"></a>Connect instance by EC2 Connect</h3><ul>
+<li>What underneath is similar to SSH connection, but everything happens remotely, no need to handle the private key file</li>
+<li>Still need to configure SSH inbound rules (22) to make it work</li>
+</ul>
+<h3 id="Access-to-other-AWS-services"><a href="#Access-to-other-AWS-services" class="headerlink" title="Access to other AWS services"></a>Access to other AWS services</h3><ol>
+<li>Create IAM role for the service permission</li>
+<li>Attach IAM role to the EC2 instance</li>
+</ol>
+<h3 id="Reference-URLs"><a href="#Reference-URLs" class="headerlink" title="Reference URLs"></a>Reference URLs</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://aws.amazon.com/ec2/instance-types">7 Instance Types</a></li>
+<li><a target="_blank" rel="noopener" href="https://instances.vantage.sh/">EC2 Instance Comparison</a></li>
+</ul>
 
     </div>
 
@@ -309,7 +344,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#IAM"><span class="nav-number">1.</span> <span class="nav-text">IAM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Usergroup"><span class="nav-number">1.1.</span> <span class="nav-text">Usergroup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Users"><span class="nav-number">1.2.</span> <span class="nav-text">Users</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Policies"><span class="nav-number">1.3.</span> <span class="nav-text">Policies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Role"><span class="nav-number">1.4.</span> <span class="nav-text">Role</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Access-to-AWS-services"><span class="nav-number">2.</span> <span class="nav-text">Access to AWS services</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#IAM"><span class="nav-number">1.</span> <span class="nav-text">IAM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Usergroup"><span class="nav-number">1.1.</span> <span class="nav-text">Usergroup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Users"><span class="nav-number">1.2.</span> <span class="nav-text">Users</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Policies"><span class="nav-number">1.3.</span> <span class="nav-text">Policies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Role"><span class="nav-number">1.4.</span> <span class="nav-text">Role</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Access-to-AWS-services"><span class="nav-number">2.</span> <span class="nav-text">Access to AWS services</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EC2"><span class="nav-number">3.</span> <span class="nav-text">EC2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Security-Group"><span class="nav-number">3.1.</span> <span class="nav-text">Security Group</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#User-Data"><span class="nav-number">3.2.</span> <span class="nav-text">User Data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Public-amp-Private-IPv4-address"><span class="nav-number">3.3.</span> <span class="nav-text">Public &amp; Private IPv4 address</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Connect-instance-by-SSH"><span class="nav-number">3.4.</span> <span class="nav-text">Connect instance by SSH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Connect-instance-by-EC2-Connect"><span class="nav-number">3.5.</span> <span class="nav-text">Connect instance by EC2 Connect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Access-to-other-AWS-services"><span class="nav-number">3.6.</span> <span class="nav-text">Access to other AWS services</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reference-URLs"><span class="nav-number">3.7.</span> <span class="nav-text">Reference URLs</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
