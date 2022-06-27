@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":330,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Primary KeyCombination of columns that uniquely specify a row. Have NOT NULL constraint Foreign KeyUsed to relate other tables’ primary key to join tables">
+  <meta name="description" content="Basic ConceptPrimary KeyCombination of columns that uniquely specify a row. Have NOT NULL constraint Foreign KeyUsed to relate other tables’ primary key to join tables">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL">
 <meta property="og:url" content="http://example.com/2022/06/14/SQL/index.html">
 <meta property="og:site_name" content="Jinjing Ge&#39;s Blog">
-<meta property="og:description" content="Primary KeyCombination of columns that uniquely specify a row. Have NOT NULL constraint Foreign KeyUsed to relate other tables’ primary key to join tables">
+<meta property="og:description" content="Basic ConceptPrimary KeyCombination of columns that uniquely specify a row. Have NOT NULL constraint Foreign KeyUsed to relate other tables’ primary key to join tables">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-06-15T01:09:41.000Z">
-<meta property="article:modified_time" content="2022-06-24T20:11:28.939Z">
+<meta property="article:modified_time" content="2022-06-27T19:06:58.362Z">
 <meta property="article:author" content="Jinjing Ge">
 <meta property="article:tag" content="SQL">
 <meta name="twitter:card" content="summary">
@@ -194,7 +194,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-06-24 16:11:28" itemprop="dateModified" datetime="2022-06-24T16:11:28-04:00">2022-06-24</time>
+                <time title="Modified: 2022-06-27 15:06:58" itemprop="dateModified" datetime="2022-06-27T15:06:58-04:00">2022-06-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -217,67 +217,78 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Primary-Key"><a href="#Primary-Key" class="headerlink" title="Primary Key"></a>Primary Key</h2><p>Combination of columns that uniquely specify a row. Have <strong>NOT NULL</strong> constraint</p>
+        <h1 id="Basic-Concept"><a href="#Basic-Concept" class="headerlink" title="Basic Concept"></a>Basic Concept</h1><h2 id="Primary-Key"><a href="#Primary-Key" class="headerlink" title="Primary Key"></a>Primary Key</h2><p>Combination of columns that uniquely specify a row. Have <strong>NOT NULL</strong> constraint</p>
 <h2 id="Foreign-Key"><a href="#Foreign-Key" class="headerlink" title="Foreign Key"></a>Foreign Key</h2><p>Used to relate other tables’ primary key to join tables</p>
 <span id="more"></span>
 
 <h2 id="Index"><a href="#Index" class="headerlink" title="Index"></a>Index</h2><p>Performance tuning method for faster retrieval of records</p>
 <h3 id="Clustered-Index"><a href="#Clustered-Index" class="headerlink" title="Clustered Index"></a>Clustered Index</h3><p>Reorders the physical order of the table and search based on the key values. Each table can have only one clustered index</p>
 <h3 id="Non-Clustered-Index"><a href="#Non-Clustered-Index" class="headerlink" title="Non Clustered Index"></a>Non Clustered Index</h3><p>Do not alter the physical order of the table. Each table can have many noclustered indexes</p>
-<h2 id="Trigger"><a href="#Trigger" class="headerlink" title="Trigger"></a>Trigger</h2><h2 id="Stored-Procedure"><a href="#Stored-Procedure" class="headerlink" title="Stored Procedure"></a>Stored Procedure</h2><p>A function consists of many queries. Can be seen as a module or script for repeated use.</p>
+<h2 id="Trigger"><a href="#Trigger" class="headerlink" title="Trigger"></a>Trigger</h2><p>A stored procedure which will be automatically executed when some events occur (Insert, update or delete, etc)</p>
+<h2 id="Stored-Procedure"><a href="#Stored-Procedure" class="headerlink" title="Stored Procedure"></a>Stored Procedure</h2><ul>
+<li>A function consists of many queries. Can be seen as a module or script for repeated use</li>
+<li>Called by [Begin…End…] block, IN represents input parameter, OUT represents output return</li>
+</ul>
 <h2 id="Normalization"><a href="#Normalization" class="headerlink" title="Normalization"></a>Normalization</h2><p>The process of minimizing redundancy and dependency by organizing fields and tables</p>
 <h2 id="Denormalization"><a href="#Denormalization" class="headerlink" title="Denormalization"></a>Denormalization</h2><p>The process of introducing redundancy by incorporating data from related tables</p>
+<h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><ul>
+<li>A virtual table consists of data of the subset of one or related tables. Not physically hold data, more like a projection</li>
+<li>Updates from source tables will be captured automatically</li>
+</ul>
 <h2 id="Self-Join"><a href="#Self-Join" class="headerlink" title="Self Join"></a>Self Join</h2><p>Useful to convert a hierarchical structure into a flat structure</p>
-<h2 id="Transpose-a-table"><a href="#Transpose-a-table" class="headerlink" title="Transpose a table"></a>Transpose a table</h2><h2 id="Performance-Tuned-Technique"><a href="#Performance-Tuned-Technique" class="headerlink" title="Performance Tuned Technique"></a>Performance Tuned Technique</h2><ul>
+<h2 id="Transpose-a-table"><a href="#Transpose-a-table" class="headerlink" title="Transpose a table"></a>Transpose a table</h2><h1 id="Performance-Tuned-Technique"><a href="#Performance-Tuned-Technique" class="headerlink" title="Performance Tuned Technique"></a>Performance Tuned Technique</h1><ul>
 <li>The common query execution flow is to scan the whole table, will be time-consuming when data amount surge</li>
-<li>Use <strong>EXPLAIN</strong> or <strong>EXPLAIN ANALYZE</strong> to see how query is executed, what steps are taken<h3 id="Index-1"><a href="#Index-1" class="headerlink" title="Index"></a>Index</h3></li>
+<li>Use <strong>EXPLAIN</strong> or <strong>EXPLAIN ANALYZE</strong> to see how query is executed, what steps are taken<h2 id="Index-1"><a href="#Index-1" class="headerlink" title="Index"></a>Index</h2></li>
 <li>Create Index<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE INDEX &lt;index_name&gt; ON &lt;table_name&gt;(&lt;column_name&gt;)</span><br></pre></td></tr></table></figure></li>
 <li>Ordered, need extra memory</li>
 </ul>
-<h4 id="B-Tree-Index"><a href="#B-Tree-Index" class="headerlink" title="B-Tree Index"></a>B-Tree Index</h4><ul>
+<h3 id="B-Tree-Index"><a href="#B-Tree-Index" class="headerlink" title="B-Tree Index"></a>B-Tree Index</h3><ul>
 <li>Default index type</li>
 <li>Used when a large of distinct values in a column (high cardinality)</li>
 <li>Log(N) time to access data</li>
 </ul>
-<h4 id="Bitmap-Index"><a href="#Bitmap-Index" class="headerlink" title="Bitmap Index"></a>Bitmap Index</h4><ul>
+<h3 id="Bitmap-Index"><a href="#Bitmap-Index" class="headerlink" title="Bitmap Index"></a>Bitmap Index</h3><ul>
 <li>Used when a small of distinct values in a column (low cardinality); e.g: A bool type column contains YES&#x2F;NO</li>
 <li>Suit for read-intensive while few writes</li>
 <li>Oracle support explicit creation; Postgres not, only creates on the fly if needed</li>
 <li>Fast due to bitwise operation</li>
 </ul>
-<h4 id="Hash-Index"><a href="#Hash-Index" class="headerlink" title="Hash Index"></a>Hash Index</h4><ul>
+<h3 id="Hash-Index"><a href="#Hash-Index" class="headerlink" title="Hash Index"></a>Hash Index</h3><ul>
 <li>Only used for Equality filter (“&#x3D;”), not for ranges of values</li>
 <li>Smaller size than B-Tree but as fast as it</li>
 <li>Used on column with unique values<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE INDEX &lt;index_name&gt; ON &lt;table_name&gt; USING HASH (&lt;column_name&gt;)</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="Tuning-Joins"><a href="#Tuning-Joins" class="headerlink" title="Tuning Joins"></a>Tuning Joins</h3><ul>
+<h2 id="Tuning-Joins"><a href="#Tuning-Joins" class="headerlink" title="Tuning Joins"></a>Tuning Joins</h2><ul>
 <li>Original Join is nested loop in essence (Full table scans)</li>
 </ul>
-<h4 id="Hash-Join"><a href="#Hash-Join" class="headerlink" title="Hash Join"></a>Hash Join</h4><ul>
+<h3 id="Hash-Join"><a href="#Hash-Join" class="headerlink" title="Hash Join"></a>Hash Join</h3><ul>
 <li>Used only when “&#x3D;” is used</li>
 <li>Build on smaller table, full table scan on the bigger table</li>
 </ul>
-<h4 id="Merge-Join"><a href="#Merge-Join" class="headerlink" title="Merge Join"></a>Merge Join</h4><ul>
+<h3 id="Merge-Join"><a href="#Merge-Join" class="headerlink" title="Merge Join"></a>Merge Join</h3><ul>
 <li>Used only when “&#x3D;” is used</li>
 <li>Sort the tables first then join</li>
 </ul>
-<h3 id="Partition"><a href="#Partition" class="headerlink" title="Partition"></a>Partition</h3><ul>
+<h2 id="Partition"><a href="#Partition" class="headerlink" title="Partition"></a>Partition</h2><ul>
 <li>Columns will be inherited from the table being partitioned</li>
 <li>Partition tables can have own indexes, constraints, triggers, etc</li>
-<li><h4 id="Partition-by-Range"><a href="#Partition-by-Range" class="headerlink" title="Partition by Range"></a>Partition by Range</h4></li>
+<li><h3 id="Partition-by-Range"><a href="#Partition-by-Range" class="headerlink" title="Partition by Range"></a>Partition by Range</h3></li>
 <li>Partition Key split by ranges, e.g: dates</li>
 <li>Partition on non-overlapping keys, i.e: different partition tables cannot split by same partition key<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE &lt;table_name&gt;</span><br><span class="line">(&lt;column_name&gt; &lt;data_type&gt; &lt;constraint&gt;,)</span><br><span class="line">PARTITION BY RANGE (partition_column)</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE &lt;table_name&gt; FROM &lt;table_name(with partition key)&gt;</span><br><span class="line">FOR VALUES FROM (&lt;partition_start&gt;) TO (&lt;partition_end&gt;)</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h4 id="Partition-by-List"><a href="#Partition-by-List" class="headerlink" title="Partition by List"></a>Partition by List</h4><ul>
+<h3 id="Partition-by-List"><a href="#Partition-by-List" class="headerlink" title="Partition by List"></a>Partition by List</h3><ul>
 <li>Partition Key split by list, e.g: S&amp;P50 stocks</li>
 <li>Partition on non-overlapping keys<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE &lt;table_name&gt;</span><br><span class="line">(&lt;column_name&gt; &lt;data_type&gt; &lt;constraint&gt;,)</span><br><span class="line">PARTITION BY RANGE (partition_column)</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE &lt;table_name&gt; FROM &lt;table_name(with partition key)&gt;</span><br><span class="line">FOR VALUES IN (&lt;partition_list&gt;)</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h4 id="Partition-by-Hash"><a href="#Partition-by-Hash" class="headerlink" title="Partition by Hash"></a>Partition by Hash</h4><ul>
+<h3 id="Partition-by-Hash"><a href="#Partition-by-Hash" class="headerlink" title="Partition by Hash"></a>Partition by Hash</h3><ul>
 <li><a target="_blank" rel="noopener" href="https://www.linkedin.com/learning/advanced-sql-for-query-tuning-and-performance-optimization/partition-by-hash?autoplay=true&resume=false">Introduction</a></li>
 </ul>
-<h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><p>A virtual table consists of data of the subset of one or related tables. Not physically hold data, more like a projection</p>
+<h2 id="Marterialized-View"><a href="#Marterialized-View" class="headerlink" title="Marterialized View"></a>Marterialized View</h2><ul>
+<li>Pre-computed query (join) result, needs extra space<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE MATERIALIZED VIEW &lt;view_name&gt; AS</span><br><span class="line">&lt;query&gt;</span><br></pre></td></tr></table></figure></li>
+<li>Need refresh to capture the changes in the source table<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">REFRESH MATERIALIZED VIEW &lt;view_name&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
 
     </div>
 
@@ -358,7 +369,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Primary-Key"><span class="nav-number">1.</span> <span class="nav-text">Primary Key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Foreign-Key"><span class="nav-number">2.</span> <span class="nav-text">Foreign Key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Index"><span class="nav-number">3.</span> <span class="nav-text">Index</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Clustered-Index"><span class="nav-number">3.1.</span> <span class="nav-text">Clustered Index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Non-Clustered-Index"><span class="nav-number">3.2.</span> <span class="nav-text">Non Clustered Index</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Trigger"><span class="nav-number">4.</span> <span class="nav-text">Trigger</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stored-Procedure"><span class="nav-number">5.</span> <span class="nav-text">Stored Procedure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Normalization"><span class="nav-number">6.</span> <span class="nav-text">Normalization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Denormalization"><span class="nav-number">7.</span> <span class="nav-text">Denormalization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Self-Join"><span class="nav-number">8.</span> <span class="nav-text">Self Join</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transpose-a-table"><span class="nav-number">9.</span> <span class="nav-text">Transpose a table</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Performance-Tuned-Technique"><span class="nav-number">10.</span> <span class="nav-text">Performance Tuned Technique</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Index-1"><span class="nav-number">10.1.</span> <span class="nav-text">Index</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#B-Tree-Index"><span class="nav-number">10.1.1.</span> <span class="nav-text">B-Tree Index</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bitmap-Index"><span class="nav-number">10.1.2.</span> <span class="nav-text">Bitmap Index</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hash-Index"><span class="nav-number">10.1.3.</span> <span class="nav-text">Hash Index</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tuning-Joins"><span class="nav-number">10.2.</span> <span class="nav-text">Tuning Joins</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hash-Join"><span class="nav-number">10.2.1.</span> <span class="nav-text">Hash Join</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Merge-Join"><span class="nav-number">10.2.2.</span> <span class="nav-text">Merge Join</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Partition"><span class="nav-number">10.3.</span> <span class="nav-text">Partition</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Partition-by-Range"><span class="nav-number">10.3.1.</span> <span class="nav-text">Partition by Range</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Partition-by-List"><span class="nav-number">10.3.2.</span> <span class="nav-text">Partition by List</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Partition-by-Hash"><span class="nav-number">10.3.3.</span> <span class="nav-text">Partition by Hash</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#View"><span class="nav-number">11.</span> <span class="nav-text">View</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Basic-Concept"><span class="nav-number">1.</span> <span class="nav-text">Basic Concept</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Primary-Key"><span class="nav-number">1.1.</span> <span class="nav-text">Primary Key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Foreign-Key"><span class="nav-number">1.2.</span> <span class="nav-text">Foreign Key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Index"><span class="nav-number">1.3.</span> <span class="nav-text">Index</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Clustered-Index"><span class="nav-number">1.3.1.</span> <span class="nav-text">Clustered Index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Non-Clustered-Index"><span class="nav-number">1.3.2.</span> <span class="nav-text">Non Clustered Index</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Trigger"><span class="nav-number">1.4.</span> <span class="nav-text">Trigger</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stored-Procedure"><span class="nav-number">1.5.</span> <span class="nav-text">Stored Procedure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Normalization"><span class="nav-number">1.6.</span> <span class="nav-text">Normalization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Denormalization"><span class="nav-number">1.7.</span> <span class="nav-text">Denormalization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#View"><span class="nav-number">1.8.</span> <span class="nav-text">View</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Self-Join"><span class="nav-number">1.9.</span> <span class="nav-text">Self Join</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transpose-a-table"><span class="nav-number">1.10.</span> <span class="nav-text">Transpose a table</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Performance-Tuned-Technique"><span class="nav-number">2.</span> <span class="nav-text">Performance Tuned Technique</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Index-1"><span class="nav-number">2.1.</span> <span class="nav-text">Index</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Tree-Index"><span class="nav-number">2.1.1.</span> <span class="nav-text">B-Tree Index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bitmap-Index"><span class="nav-number">2.1.2.</span> <span class="nav-text">Bitmap Index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash-Index"><span class="nav-number">2.1.3.</span> <span class="nav-text">Hash Index</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tuning-Joins"><span class="nav-number">2.2.</span> <span class="nav-text">Tuning Joins</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash-Join"><span class="nav-number">2.2.1.</span> <span class="nav-text">Hash Join</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Merge-Join"><span class="nav-number">2.2.2.</span> <span class="nav-text">Merge Join</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Partition"><span class="nav-number">2.3.</span> <span class="nav-text">Partition</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Partition-by-Range"><span class="nav-number">2.3.1.</span> <span class="nav-text">Partition by Range</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Partition-by-List"><span class="nav-number">2.3.2.</span> <span class="nav-text">Partition by List</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Partition-by-Hash"><span class="nav-number">2.3.3.</span> <span class="nav-text">Partition by Hash</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Marterialized-View"><span class="nav-number">2.4.</span> <span class="nav-text">Marterialized View</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
