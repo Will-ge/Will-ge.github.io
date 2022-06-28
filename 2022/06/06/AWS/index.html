@@ -31,8 +31,9 @@
 <meta property="og:image" content="http://example.com/images/AWS/AMI.png">
 <meta property="og:image" content="http://example.com/images/AWS/EBS.png">
 <meta property="og:image" content="http://example.com/images/AWS/EFS.png">
+<meta property="og:image" content="http://example.com/images/AWS/VPC.png">
 <meta property="article:published_time" content="2022-06-07T03:12:43.000Z">
-<meta property="article:modified_time" content="2022-06-27T18:10:13.081Z">
+<meta property="article:modified_time" content="2022-06-28T01:56:48.928Z">
 <meta property="article:author" content="Jinjing Ge">
 <meta property="article:tag" content="AWS">
 <meta name="twitter:card" content="summary">
@@ -199,7 +200,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-06-27 14:10:13" itemprop="dateModified" datetime="2022-06-27T14:10:13-04:00">2022-06-27</time>
+                <time title="Modified: 2022-06-27 21:56:48" itemprop="dateModified" datetime="2022-06-27T21:56:48-04:00">2022-06-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -348,7 +349,17 @@
 <li>Backtrack: restore data at any point of time without using backups</li>
 <li>can’t use SSH to connect</li>
 </ul>
-
+<h2 id="VPC-Virtual-Private-Cloud"><a href="#VPC-Virtual-Private-Cloud" class="headerlink" title="VPC (Virtual Private Cloud)"></a>VPC (Virtual Private Cloud)</h2><ul>
+<li>Private network to deploy resources (regional)</li>
+</ul>
+<h3 id="Internet-Gateways"><a href="#Internet-Gateways" class="headerlink" title="Internet Gateways"></a>Internet Gateways</h3><ul>
+<li>route to the public subnet to make instances connect to the Internet</li>
+</ul>
+<h3 id="NAT-Gateways"><a href="#NAT-Gateways" class="headerlink" title="NAT Gateways"></a>NAT Gateways</h3><ul>
+<li>deployed in the public subnet, route from private subnet to it, then to the Internet Gateways to access to the Internet</li>
+</ul>
+<p><img src="/./images/AWS/VPC.png" alt="VPC"></p>
+<h2 id="S3"><a href="#S3" class="headerlink" title="S3"></a>S3</h2>
     </div>
 
     
@@ -431,7 +442,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#IAM"><span class="nav-number">1.</span> <span class="nav-text">IAM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Usergroup"><span class="nav-number">1.1.</span> <span class="nav-text">Usergroup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Users"><span class="nav-number">1.2.</span> <span class="nav-text">Users</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Policies"><span class="nav-number">1.3.</span> <span class="nav-text">Policies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Role"><span class="nav-number">1.4.</span> <span class="nav-text">Role</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Access-to-AWS-services"><span class="nav-number">2.</span> <span class="nav-text">Access to AWS services</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EC2"><span class="nav-number">3.</span> <span class="nav-text">EC2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Security-Group"><span class="nav-number">3.1.</span> <span class="nav-text">Security Group</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#User-Data"><span class="nav-number">3.2.</span> <span class="nav-text">User Data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Public-amp-Private-IPv4-address"><span class="nav-number">3.3.</span> <span class="nav-text">Public &amp; Private IPv4 address</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Connect-instance-by-SSH"><span class="nav-number">3.4.</span> <span class="nav-text">Connect instance by SSH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Connect-instance-by-EC2-Connect"><span class="nav-number">3.5.</span> <span class="nav-text">Connect instance by EC2 Connect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Access-to-other-AWS-services"><span class="nav-number">3.6.</span> <span class="nav-text">Access to other AWS services</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Elastic-Block-Storage-EBS"><span class="nav-number">3.7.</span> <span class="nav-text">Elastic Block Storage (EBS)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EBS-Snapshot"><span class="nav-number">3.8.</span> <span class="nav-text">EBS Snapshot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AMI-AWS-Machine-Images"><span class="nav-number">3.9.</span> <span class="nav-text">AMI (AWS Machine Images)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EFS-Elastic-File-System"><span class="nav-number">3.10.</span> <span class="nav-text">EFS (Elastic File System)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EBS-v-s-EFS"><span class="nav-number">3.11.</span> <span class="nav-text">EBS v.s EFS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reference-URLs"><span class="nav-number">3.12.</span> <span class="nav-text">Reference URLs</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RDS"><span class="nav-number">4.</span> <span class="nav-text">RDS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RDS-Read-Replicas"><span class="nav-number">4.1.</span> <span class="nav-text">RDS Read Replicas</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RDS-Multi-AZ"><span class="nav-number">4.2.</span> <span class="nav-text">RDS Multi AZ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Aurora"><span class="nav-number">4.3.</span> <span class="nav-text">Aurora</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#IAM"><span class="nav-number">1.</span> <span class="nav-text">IAM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Usergroup"><span class="nav-number">1.1.</span> <span class="nav-text">Usergroup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Users"><span class="nav-number">1.2.</span> <span class="nav-text">Users</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Policies"><span class="nav-number">1.3.</span> <span class="nav-text">Policies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Role"><span class="nav-number">1.4.</span> <span class="nav-text">Role</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Access-to-AWS-services"><span class="nav-number">2.</span> <span class="nav-text">Access to AWS services</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EC2"><span class="nav-number">3.</span> <span class="nav-text">EC2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Security-Group"><span class="nav-number">3.1.</span> <span class="nav-text">Security Group</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#User-Data"><span class="nav-number">3.2.</span> <span class="nav-text">User Data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Public-amp-Private-IPv4-address"><span class="nav-number">3.3.</span> <span class="nav-text">Public &amp; Private IPv4 address</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Connect-instance-by-SSH"><span class="nav-number">3.4.</span> <span class="nav-text">Connect instance by SSH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Connect-instance-by-EC2-Connect"><span class="nav-number">3.5.</span> <span class="nav-text">Connect instance by EC2 Connect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Access-to-other-AWS-services"><span class="nav-number">3.6.</span> <span class="nav-text">Access to other AWS services</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Elastic-Block-Storage-EBS"><span class="nav-number">3.7.</span> <span class="nav-text">Elastic Block Storage (EBS)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EBS-Snapshot"><span class="nav-number">3.8.</span> <span class="nav-text">EBS Snapshot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AMI-AWS-Machine-Images"><span class="nav-number">3.9.</span> <span class="nav-text">AMI (AWS Machine Images)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EFS-Elastic-File-System"><span class="nav-number">3.10.</span> <span class="nav-text">EFS (Elastic File System)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EBS-v-s-EFS"><span class="nav-number">3.11.</span> <span class="nav-text">EBS v.s EFS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reference-URLs"><span class="nav-number">3.12.</span> <span class="nav-text">Reference URLs</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RDS"><span class="nav-number">4.</span> <span class="nav-text">RDS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RDS-Read-Replicas"><span class="nav-number">4.1.</span> <span class="nav-text">RDS Read Replicas</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RDS-Multi-AZ"><span class="nav-number">4.2.</span> <span class="nav-text">RDS Multi AZ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Aurora"><span class="nav-number">4.3.</span> <span class="nav-text">Aurora</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VPC-Virtual-Private-Cloud"><span class="nav-number">5.</span> <span class="nav-text">VPC (Virtual Private Cloud)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Internet-Gateways"><span class="nav-number">5.1.</span> <span class="nav-text">Internet Gateways</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NAT-Gateways"><span class="nav-number">5.2.</span> <span class="nav-text">NAT Gateways</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3"><span class="nav-number">6.</span> <span class="nav-text">S3</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -445,20 +456,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/Categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
