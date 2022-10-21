@@ -32,8 +32,9 @@
 <meta property="og:image" content="http://example.com/images/AWS/EBS.png">
 <meta property="og:image" content="http://example.com/images/AWS/EFS.png">
 <meta property="og:image" content="http://example.com/images/AWS/VPC.png">
+<meta property="og:image" content="http://example.com/images/AWS/CORS.png">
 <meta property="article:published_time" content="2022-06-07T03:12:43.000Z">
-<meta property="article:modified_time" content="2022-07-27T03:39:54.771Z">
+<meta property="article:modified_time" content="2022-10-21T03:44:05.040Z">
 <meta property="article:author" content="Jinjing Ge">
 <meta property="article:tag" content="AWS">
 <meta name="twitter:card" content="summary">
@@ -200,7 +201,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-07-26 23:39:54" itemprop="dateModified" datetime="2022-07-26T23:39:54-04:00">2022-07-26</time>
+                <time title="Modified: 2022-10-20 23:44:05" itemprop="dateModified" datetime="2022-10-20T23:44:05-04:00">2022-10-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -328,6 +329,20 @@
 <li><a target="_blank" rel="noopener" href="https://instances.vantage.sh/">EC2 Instance Comparison</a></li>
 <li><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html">EBS Volume Types Summary</a></li>
 </ul>
+<h2 id="ELB"><a href="#ELB" class="headerlink" title="ELB"></a>ELB</h2><ul>
+<li>servers that forward traffic to multiple EC2 instances</li>
+<li>do the health check against EC2 instance automatically</li>
+<li>can create a security group only allows traffic originate from the load balancer (to EC2 instance)</li>
+</ul>
+<h3 id="Classic-Load-Balance-CLB"><a href="#Classic-Load-Balance-CLB" class="headerlink" title="Classic Load Balance(CLB)"></a>Classic Load Balance(CLB)</h3><ul>
+<li>supports TCP, HTTP &amp; HTTPS</li>
+<li>clients access EC2 instance from CLB directly</li>
+</ul>
+<h3 id="Application-Load-Balancer-ALB"><a href="#Application-Load-Balancer-ALB" class="headerlink" title="Application Load Balancer(ALB)"></a>Application Load Balancer(ALB)</h3><ul>
+<li>can route to multiple target groups</li>
+<li>health checks are at the target group level</li>
+<li>application servers don’t see the IP of the client directly</li>
+</ul>
 <h2 id="RDS"><a href="#RDS" class="headerlink" title="RDS"></a>RDS</h2><ul>
 <li>ability to restore data by timestamp (backup every 5 mins)</li>
 <li>can’t use SSH to connect to RDS Instance</li>
@@ -349,6 +364,67 @@
 <li>Backtrack: restore data at any point of time without using backups</li>
 <li>can’t use SSH to connect</li>
 </ul>
+<h2 id="Route-53"><a href="#Route-53" class="headerlink" title="Route 53"></a>Route 53</h2><ul>
+<li>Domain Name System(DNS), match hostname with IP address</li>
+<li>Also a Domain Registra</li>
+</ul>
+<h3 id="Record-Type"><a href="#Record-Type" class="headerlink" title="Record Type"></a>Record Type</h3><ul>
+<li>A: maps hostname to IPv4</li>
+<li>AAAA: maps hostname to IPv6</li>
+<li>CNAME: maps hostname to another hostname(also works for AWS resource)<ul>
+<li>must have A&#x2F;AAAA record</li>
+<li>only for non root domain, e.g: test.mydomain.com</li>
+</ul>
+</li>
+<li>NS: name servers for the hosted zone, control how traffic is routed for a domain</li>
+</ul>
+<h3 id="Hosted-Zone"><a href="#Hosted-Zone" class="headerlink" title="Hosted Zone"></a>Hosted Zone</h3><ul>
+<li>Public</li>
+<li>Private: internal access, e.g: services within VPC</li>
+</ul>
+<h3 id="Records-Time-to-Live-TTL"><a href="#Records-Time-to-Live-TTL" class="headerlink" title="Records Time to Live(TTL)"></a>Records Time to Live(TTL)</h3><ul>
+<li>a set timeframe after which the record is refreshed</li>
+</ul>
+<h3 id="Alias"><a href="#Alias" class="headerlink" title="Alias"></a>Alias</h3><ul>
+<li>map a hostname to an AWS resource</li>
+<li>works for both root &amp; non-root domain</li>
+<li>can’t map to EC2 DNS name</li>
+</ul>
+<h3 id="Routing-Policies"><a href="#Routing-Policies" class="headerlink" title="Routing Policies"></a>Routing Policies</h3><ul>
+<li>Defines how to answer a DNS query</li>
+</ul>
+<ol>
+<li>Simple<ul>
+<li>Route to single resource</li>
+<li>If specify multiple values, will randomly answer one</li>
+</ul>
+</li>
+<li>Weighted<ul>
+<li>Route to each resource with assigned weight</li>
+<li>Records must have same name and type</li>
+</ul>
+</li>
+<li>Latency<ul>
+<li>Route to the resource with least latency</li>
+</ul>
+</li>
+<li>Failover<ul>
+<li>Primary route must associate with health check</li>
+<li>Once the primary route health check fails, will route to secondary route</li>
+</ul>
+</li>
+<li>Geolocation<ul>
+<li>should have default record in case no match</li>
+<li>route based on user location</li>
+</ul>
+</li>
+<li>Geoproximity<ul>
+<li>route based on user and resource location</li>
+<li>can shift the traffic distribution by setting bias</li>
+<li></li>
+</ul>
+</li>
+</ol>
 <h2 id="VPC-Virtual-Private-Cloud"><a href="#VPC-Virtual-Private-Cloud" class="headerlink" title="VPC (Virtual Private Cloud)"></a>VPC (Virtual Private Cloud)</h2><ul>
 <li>Private network to deploy resources (regional)</li>
 </ul>
@@ -381,6 +457,15 @@
 <h3 id="Access-Control-List-ACL"><a href="#Access-Control-List-ACL" class="headerlink" title="Access Control List (ACL)"></a>Access Control List (ACL)</h3><ul>
 <li>Read&#x2F;Write permissions on the object level</li>
 </ul>
+<h3 id="S3-Website"><a href="#S3-Website" class="headerlink" title="S3 Website"></a>S3 Website</h3><ul>
+<li>static website host, need index.html file</li>
+<li>public access needs to turn off block all public access and create a bucket policy allowing <strong>GetObject</strong></li>
+</ul>
+<h3 id="Cross-origin-resource-sharing-CORS"><a href="#Cross-origin-resource-sharing-CORS" class="headerlink" title="Cross-origin resource sharing (CORS)"></a>Cross-origin resource sharing (CORS)</h3><ul>
+<li>need to enable the correct CORS headers for the cross-origin request on S3 bucket</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;AllowedHeaders&quot;: [</span><br><span class="line">            &quot;Authorization&quot;</span><br><span class="line">        ],</span><br><span class="line">        &quot;AllowedMethods&quot;: [</span><br><span class="line">            &quot;GET&quot;</span><br><span class="line">        ],</span><br><span class="line">        &quot;AllowedOrigins&quot;: [</span><br><span class="line">            &quot;http://demo-for-everything.s3-website-us-east-1.amazonaws.com&quot;</span><br><span class="line">        ],</span><br><span class="line">        &quot;ExposeHeaders&quot;: [],</span><br><span class="line">        &quot;MaxAgeSeconds&quot;: 3000</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p><img src="/./images/AWS/CORS.png" alt="CORS"></p>
 
     </div>
 
@@ -464,7 +549,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#IAM"><span class="nav-number">1.</span> <span class="nav-text">IAM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Usergroup"><span class="nav-number">1.1.</span> <span class="nav-text">Usergroup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Users"><span class="nav-number">1.2.</span> <span class="nav-text">Users</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Policies"><span class="nav-number">1.3.</span> <span class="nav-text">Policies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Role"><span class="nav-number">1.4.</span> <span class="nav-text">Role</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Access-to-AWS-services"><span class="nav-number">2.</span> <span class="nav-text">Access to AWS services</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EC2"><span class="nav-number">3.</span> <span class="nav-text">EC2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Security-Group"><span class="nav-number">3.1.</span> <span class="nav-text">Security Group</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#User-Data"><span class="nav-number">3.2.</span> <span class="nav-text">User Data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Public-amp-Private-IPv4-address"><span class="nav-number">3.3.</span> <span class="nav-text">Public &amp; Private IPv4 address</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Connect-instance-by-SSH"><span class="nav-number">3.4.</span> <span class="nav-text">Connect instance by SSH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Connect-instance-by-EC2-Connect"><span class="nav-number">3.5.</span> <span class="nav-text">Connect instance by EC2 Connect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Access-to-other-AWS-services"><span class="nav-number">3.6.</span> <span class="nav-text">Access to other AWS services</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Elastic-Block-Storage-EBS"><span class="nav-number">3.7.</span> <span class="nav-text">Elastic Block Storage (EBS)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EBS-Snapshot"><span class="nav-number">3.8.</span> <span class="nav-text">EBS Snapshot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AMI-AWS-Machine-Images"><span class="nav-number">3.9.</span> <span class="nav-text">AMI (AWS Machine Images)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EFS-Elastic-File-System"><span class="nav-number">3.10.</span> <span class="nav-text">EFS (Elastic File System)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EBS-v-s-EFS"><span class="nav-number">3.11.</span> <span class="nav-text">EBS v.s EFS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reference-URLs"><span class="nav-number">3.12.</span> <span class="nav-text">Reference URLs</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RDS"><span class="nav-number">4.</span> <span class="nav-text">RDS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RDS-Read-Replicas"><span class="nav-number">4.1.</span> <span class="nav-text">RDS Read Replicas</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RDS-Multi-AZ"><span class="nav-number">4.2.</span> <span class="nav-text">RDS Multi AZ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Aurora"><span class="nav-number">4.3.</span> <span class="nav-text">Aurora</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VPC-Virtual-Private-Cloud"><span class="nav-number">5.</span> <span class="nav-text">VPC (Virtual Private Cloud)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Internet-Gateways"><span class="nav-number">5.1.</span> <span class="nav-text">Internet Gateways</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NAT-Gateways"><span class="nav-number">5.2.</span> <span class="nav-text">NAT Gateways</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3"><span class="nav-number">6.</span> <span class="nav-text">S3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Versioning"><span class="nav-number">6.1.</span> <span class="nav-text">Versioning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Encryption"><span class="nav-number">6.2.</span> <span class="nav-text">Encryption</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bucket-Policy"><span class="nav-number">6.3.</span> <span class="nav-text">Bucket Policy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Access-Control-List-ACL"><span class="nav-number">6.4.</span> <span class="nav-text">Access Control List (ACL)</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#IAM"><span class="nav-number">1.</span> <span class="nav-text">IAM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Usergroup"><span class="nav-number">1.1.</span> <span class="nav-text">Usergroup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Users"><span class="nav-number">1.2.</span> <span class="nav-text">Users</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Policies"><span class="nav-number">1.3.</span> <span class="nav-text">Policies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Role"><span class="nav-number">1.4.</span> <span class="nav-text">Role</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Access-to-AWS-services"><span class="nav-number">2.</span> <span class="nav-text">Access to AWS services</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EC2"><span class="nav-number">3.</span> <span class="nav-text">EC2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Security-Group"><span class="nav-number">3.1.</span> <span class="nav-text">Security Group</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#User-Data"><span class="nav-number">3.2.</span> <span class="nav-text">User Data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Public-amp-Private-IPv4-address"><span class="nav-number">3.3.</span> <span class="nav-text">Public &amp; Private IPv4 address</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Connect-instance-by-SSH"><span class="nav-number">3.4.</span> <span class="nav-text">Connect instance by SSH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Connect-instance-by-EC2-Connect"><span class="nav-number">3.5.</span> <span class="nav-text">Connect instance by EC2 Connect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Access-to-other-AWS-services"><span class="nav-number">3.6.</span> <span class="nav-text">Access to other AWS services</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Elastic-Block-Storage-EBS"><span class="nav-number">3.7.</span> <span class="nav-text">Elastic Block Storage (EBS)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EBS-Snapshot"><span class="nav-number">3.8.</span> <span class="nav-text">EBS Snapshot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AMI-AWS-Machine-Images"><span class="nav-number">3.9.</span> <span class="nav-text">AMI (AWS Machine Images)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EFS-Elastic-File-System"><span class="nav-number">3.10.</span> <span class="nav-text">EFS (Elastic File System)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EBS-v-s-EFS"><span class="nav-number">3.11.</span> <span class="nav-text">EBS v.s EFS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reference-URLs"><span class="nav-number">3.12.</span> <span class="nav-text">Reference URLs</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ELB"><span class="nav-number">4.</span> <span class="nav-text">ELB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Classic-Load-Balance-CLB"><span class="nav-number">4.1.</span> <span class="nav-text">Classic Load Balance(CLB)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Application-Load-Balancer-ALB"><span class="nav-number">4.2.</span> <span class="nav-text">Application Load Balancer(ALB)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RDS"><span class="nav-number">5.</span> <span class="nav-text">RDS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RDS-Read-Replicas"><span class="nav-number">5.1.</span> <span class="nav-text">RDS Read Replicas</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RDS-Multi-AZ"><span class="nav-number">5.2.</span> <span class="nav-text">RDS Multi AZ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Aurora"><span class="nav-number">5.3.</span> <span class="nav-text">Aurora</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Route-53"><span class="nav-number">6.</span> <span class="nav-text">Route 53</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Record-Type"><span class="nav-number">6.1.</span> <span class="nav-text">Record Type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hosted-Zone"><span class="nav-number">6.2.</span> <span class="nav-text">Hosted Zone</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Records-Time-to-Live-TTL"><span class="nav-number">6.3.</span> <span class="nav-text">Records Time to Live(TTL)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Alias"><span class="nav-number">6.4.</span> <span class="nav-text">Alias</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Routing-Policies"><span class="nav-number">6.5.</span> <span class="nav-text">Routing Policies</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VPC-Virtual-Private-Cloud"><span class="nav-number">7.</span> <span class="nav-text">VPC (Virtual Private Cloud)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Internet-Gateways"><span class="nav-number">7.1.</span> <span class="nav-text">Internet Gateways</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NAT-Gateways"><span class="nav-number">7.2.</span> <span class="nav-text">NAT Gateways</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3"><span class="nav-number">8.</span> <span class="nav-text">S3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Versioning"><span class="nav-number">8.1.</span> <span class="nav-text">Versioning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Encryption"><span class="nav-number">8.2.</span> <span class="nav-text">Encryption</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bucket-Policy"><span class="nav-number">8.3.</span> <span class="nav-text">Bucket Policy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Access-Control-List-ACL"><span class="nav-number">8.4.</span> <span class="nav-text">Access Control List (ACL)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#S3-Website"><span class="nav-number">8.5.</span> <span class="nav-text">S3 Website</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cross-origin-resource-sharing-CORS"><span class="nav-number">8.6.</span> <span class="nav-text">Cross-origin resource sharing (CORS)</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
